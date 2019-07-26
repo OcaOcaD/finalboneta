@@ -1,0 +1,275 @@
+.titulo_index{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 500%;	
+	color: white;
+}
+.titulo_contacto{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 200%;	
+	color: white;
+}
+#index_body{
+	/*
+	background: url(../img/fondo.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	*/
+}
+.index_body{
+	background: linear-gradient(140deg, #294d87 20%, rgb(0,51,102) 20%, #294d87 50%);
+	/*
+	background-color: #294d87;
+	background-color: rgb(0,51,102);*/
+}
+.admin{
+	width: 150px;
+	margin-right: 2vw;
+	margin-left: 85vw;
+	margin-bottom: 2vh;
+	color: black !important;
+	text-decoration: none;
+}
+.form{
+	margin-top: 10vh;
+}
+#cat_body{
+	background-color: #294d87;
+}
+#cat_content{
+	margin-top: 15vh;
+}
+.boneta{
+	/*background: url(../img/logo_RM.png);*/
+	/*background-position: center;*/
+	/*background-repeat: no-repeat;*/
+	/*background-attachment: fixed;*/
+	margin-top: 20vh;
+	margin-left: 10vw;
+	margin-right: 10vw;
+	margin-bottom: 10vh;
+	height: 100vh;
+	/*width: 100vw;*/
+}
+.index_logo{
+	height: 50vh;
+}
+.side_menu{
+	height: 400px;
+	background-color: #294d87;
+}
+.bg-catSquare{
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+	background-color: white;
+	border: solid 3px #ffc107;
+	border-radius: .75rem;
+	margin-right: 15px;
+	margin-left: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.cat_40vh{
+	height: 40vh;
+}
+.cat_60vh{
+	height: 60vh;
+}
+.cat_table{
+	/*height: 30vh;*/
+}
+.content{
+/*	background-color: #af9d17;*/
+	font-family: 'Montserrat', sans-serif;
+	height: 97vh;
+	/*background-color: #294d87;*/
+	margin-top: 10vh;
+}
+.logo{	
+	height: 20vh;
+}
+#logo_logo{
+	height: 	100%; 
+	position: relative;
+	padding-right: 5px;
+	padding-left: 30px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+#form_form{
+	position: fixed;
+}
+.table{
+	border-radius: .25rem;
+}
+/********************/
+.cat_image{
+	max-width: 100%;
+	max-height: 30vh;
+}
+
+.hidden_stuff{
+	display: none;  /********OCULTO*/
+}
+.blocked_div{
+	display:block !important;
+}
+.promoSquare{
+	background-color: #FFAA00;
+	color: #294d87;
+	border-radius: 50rem ; 
+	transition-duration: 1s;
+	margin-bottom: 30px;
+}
+.cat_square{
+	color: white;
+    border-radius: 20px ; 
+	transition-duration: 1s;
+	margin-bottom: 30px;
+	height: 50vh;
+}
+.cat_square:hover .hidden_stuff{
+	display: block;
+}
+.cat_square:hover{
+
+}
+.email_viewS{
+	display: block;
+}
+.email_viewH{
+	display: none;
+}
+#hidden_button{
+	position: absolute;
+	border-radius: 25rem;
+	background-color: black;
+	width: 150px;
+}
+.buy_button{
+	position: absolute;
+	border-radius: 25rem;
+	color: white;
+	width: 150px;
+}
+#comprar:hover #buy_button{
+	transition-duration: 1s;
+	margin-left: 15px;
+}
+.email_buy{
+	display: none;
+}
+#hidden_send_button{
+	position: absolute;
+	border-radius: 25rem;
+	background-color: black;
+	width: 150px;
+}
+#send_button{
+	position: absolute;
+	border-radius: 25rem;
+	color: white;
+	width: 150px;
+}
+#enviar:hover #send_button{
+	transition-duration: 1s;
+	margin-left: 15px;
+}
+/*_____________________*/
+.new_button{
+	color: white;
+	position: relative;
+	border-radius: 25rem;
+	width: 200px;
+}
+
+#add_article:hover .new_button{
+	transition-duration: 1s;
+	margin-left: 15px;
+}
+.hidden_circle{
+	position: absolute;
+	border-radius: 50rem;
+	background-color: black;
+	width: 40px;
+}
+.circle:hover .hidden_circle{
+	position: absolute;
+	border-radius: 50rem;
+	background-color: black;
+	width: 30%;
+}
+	.add_new{
+		height: 70px;
+	}
+/*_____________________*/
+	
+.delete_button{
+	border:  solid 1px white;
+	position: relative;
+	border-radius: 25rem;
+	width: 150px;
+}
+#delete:hover .delete_button{	
+	transition-duration: 1s;
+	margin-left: 15px;
+}
+	.edit_button{
+		position: absolute;
+		border-radius: 25rem;
+		color: white;
+		width: 150px;
+	}
+	#editar:hover .edit_button{
+		transition-duration: 1s;
+		margin-left: 15px;
+	}
+.confirm_button{
+	color: white;
+	position: relative;
+	border-radius: 25rem;
+	width: 150px;
+}
+#confirm:hover .confirm_button{	
+	transition-duration: 1s;
+	margin-left: 15px;
+}
+/***********************************/
+.contacto_logo{
+	height: 40vh;
+	position: center;
+}
+/************************/
+.card-body .fa {
+  padding: 15px;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.card-body .fa:hover {
+    opacity: 0.7;
+}
+
+.card-body .fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.card-body .fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.card-body .fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.card-body .fa-instagram {
+  background: #ff5700;
+  color: white;
+}	
