@@ -1,0 +1,9 @@
+html, body{
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.cat__content{
+    width: 100vw;
+    overflow-x: hidden;
+}

@@ -1,0 +1,10 @@
+.cat__product{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}

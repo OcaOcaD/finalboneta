@@ -1,0 +1,111 @@
+.catalog__row{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100% !important;
+    height: 440px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2em;
+}
+    .cat__square{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: #f0ad4e;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    .cat__square:hover .hidden_stuff{
+        display: block;
+    }                      
+        .cat__img__container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 45%;
+            width: 100%;
+            overflow: hidden;
+        }
+            .cat__image{
+                max-width: 100%;
+                height: auto;
+            }
+        .cat__info__container{
+            height: calc(55% - 30px);
+            width: 100%;
+            padding: 0.5em;
+        }
+            .cat__title{
+                height: auto;
+            }
+                .cat__title h1{
+                    margin: 0;
+                    padding: 0;
+                    font-size: 130%;
+                    color: black;
+                    text-shadow: 2px 2px grey;
+                }
+            .cat__description{
+                margin: 0;
+                padding: 0;
+                padding-top: 0.5em;
+                padding-bottom: 0.5em;
+            }
+                .cat__description p{
+                    padding: 0;
+                    margin: 0;
+                    font-size: 1.1vw;
+                }
+        .cat__order__button{
+            position: absolute;
+            bottom: 1em;
+            height: 30px;
+            width: calc(100% - 2em);
+        }
+            .cat__order__button button{
+                margin: 0;
+                padding: 0;
+            }
+            .back__button{
+                position: absolute;
+                width: 70%;
+                height: 100%;
+                border-radius: 15px;
+                background-color: #1d1d1b;
+                z-index: 10;
+            }
+            .cat__buy__button{
+                position: absolute;
+                width: 70%;
+                height: 100%;
+                border-radius: 15px;                
+                background-color: #ffc107;
+                border: 1px solid brown;
+                z-index: 20;
+                transition: transform 0.2s ease-out;
+            }
+        .cat__order__button:hover .cat__buy__button{
+            transform: translateX(30px);
+        }
+
+@media ( max-width: 768px ){
+    .catalog__row{
+        flex-direction: column;
+        height: auto;
+    }
+        .cat__square{
+            margin-bottom: 2em;
+            margin-left: 0.5em;
+            margin-right: 0.5em;
+            width: calc(100% - 1em);
+            height: 440px;
+        }
+
+        .cat__description p{
+            padding: 0;
+            margin: 0;
+            font-size: 90%;
+        }
+}

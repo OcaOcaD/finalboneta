@@ -99,9 +99,7 @@ button{
 .cat_60vh{
 	height: 60vh;
 }
-.cat_25vh{
-	height: 30vh;
-}
+
 .cat_table{
 	/*height: 30vh;*/
 }
@@ -169,16 +167,6 @@ button{
 	border-radius: 50rem ; 
 	transition-duration: 1s;
 	margin-bottom: 30px;
-}
-.cat_square{
-	transition-duration: 1s;
-	margin-right: 15px;
-	margin-left: 15px;
-	margin-top: 15px;
-	margin-bottom: 15px;
-}
-.cat_square:hover .hidden_stuff{
-	display: block;
 }
 .cat_square:hover{
 

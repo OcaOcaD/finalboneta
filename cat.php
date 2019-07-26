@@ -1,8 +1,10 @@
 <?php 
+  $pestaña = "catalogo";
+  include("utilities/Product.php");
   include("conexion.php");
   session_start();
-  if ( !isset($_SESSION['escogido']) ) {
-    $_SESSION['catalogo_actual'] = "promocion";
+  if ( !isset( $_GET['c'] ) ) {
+    $catalogo_actual = "promocion";
   }
  ?>
 <!DOCTYPE html>
@@ -14,6 +16,11 @@
   <link rel="stylesheet" href="diseño/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="diseño/css/estilos.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="cat.css">
+  <link rel="stylesheet" href="components/sideDrawer/sideDrawer.css">
+  <link rel="stylesheet" href="components/catShower/catShower.css">
+  <link rel="stylesheet" href="components/catShower/promos/promos.css">
+  <link rel="stylesheet" href="components/catShower/showProducts/showProducts.css">
 </head>
 <body id="cat_body" class="">
   <?php 
@@ -30,8 +37,8 @@
       ";
       unset($_SESSION['pedidoenviado']);
     }
-   ?>
-
+    ?>
+  <?php //include("components/oldvar/oldvar.php") ?>
   <div class="navbar_oca fixed-top">
 
       <ul class="nav nav-pills nav-fill bg-danger">
@@ -46,208 +53,13 @@
         </li>
       </ul>
   </div>
-<div id="cat_content" class="row" style=" margin-bottom: 14vh;">
-  <div class="side_menu col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-2" style="margin-top:8vh;">
-  <div id="logo_categorias" class="logo">
-      <img id="logo_logo" class="logo_logo" src="diseño/img/RMlogo.png">
-  </div>
-      <form id="form_form" action="proceso_catalogo.php" method="POST">
-        <div class=" list-group list-group-flush" id="list-tab" role="tablist">
-          <legend style="width: 100%; color: white; padding-left: 5px;">Elige catalogo</legend>
-          <hr>
-          <button id="tipo0" type="input" name="tipo0" class="btn list-group-item text-left">
-            Promociones
-          </button>
-          <button id="tipo1" type="input" name="tipo1" class="btn list-group-item text-left">
-            Caballero
-          </button>
-          <button id="tipo2" type="input" name="tipo2" class="btn list-group-item text-left">
-            Dama
-          </button>
-          <button id="tipo3" type="input" name="tipo3" class="btn list-group-item text-left">
-            Niños
-          </button>
-          <button id="tipo4" type="input" name="tipo4" class="btn list-group-item text-left">
-            Escolar
-          </button>
-          <button id="tipo5" type="input" name="tipo5" class="btn list-group-item text-left">
-            Bebés
-          </button>
-          <br>
-          <br>
-        </div>
-        
-      </form>
-  </div>
-
-  <div class="content col-xs-12 col-sm-6 col-md-8 col-lg-10 col-xl-10" style="margin-top:16vh; padding-top: 10px;">
-    <div class="row">
-      <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-        <legend style="width: 100%; color: white">Catalogo <?php echo $_SESSION['catalogo_actual']; ?></legend>
-        <hr>
-      </div>
-    </div>
-    <!--<div class="row">-->
-      <?php 
-      if ( $_SESSION['catalogo_actual'] == 'promocion' ){
-      echo "<div class='row' height=''>";
-        /****************** mostrar tarjetas de promoción principal **********************/
-        $productos_query = "SELECT * FROM productos WHERE categoria = 'principal' ";
-        $productos = mysqli_query($conexion,$productos_query);
-        $productos_rows = mysqli_num_rows($productos);
-        for ($i=0; $i < $productos_rows; $i++) { 
-          $productos_data = mysqli_fetch_array($productos);
-        ?>
-
-        <div id="cat_square<?php echo $i;?>" class="cat_square col-md-4 col-lg-3 col-xl-2 col-sm-10 col-xs-12">
-          <br>
-          <table id="cat_item<?php echo $i;?>" class="table bg-warning  cat_40vh " >
-            <tbody>
-              <tr>
-                <td class="cat_25vh">
-                  <center>
-                    <img src="diseño/img/<?php echo $productos_data['imagen'] ?>" class="cat_image">
-                  </center>
-                  <!--<img src="diseño/img/caballero.jpg" class="cat_image">-->
-                </td>
-                <td id="email_view<?php echo $i;?>" class="email_viewH">
-                    <div class="explicacion ">
-                      <strong><h3>¿Te interesa este producto?</h3></strong>
-                      <br>
-                      <p>Dejanos un mensaje con tu pedido y en breve te responderemos</p>
-                    </div>
-                    <form id="email<?php echo $i;?>" action="pedido_email.php" method="POST"> <!--También hay que mandarlo a pedidos.php para subir el pedido-->
-                      <div class=" form-group">
-                        <label  for="">Escribenos aquí por tu pedido</label>
-                        <textarea class="form-control" required placeholder="¡Quiero 3 de ésta increíble prenda! una docena, Dame un par de esta prenda" id="" name="pedido_descripcion<?php echo  $i ?>" rows="3"></textarea>
-                      </div>
-                      <div class="form-group">
-                        <label class="">¿A qué correo deseas que te contactemos?</label>
-                        <input type ="email" class="form-control form-control-sm" required name="pedido_correo<?php echo  $i ?>" placeholder="email@email.com">
-                        <small id="emailHelp" class="form-text text-white">Nunca compartiremos tu información con nadie</small>
-                        <center><p><i class="fa fa-user-secret fa-2x" aria-hidden="true"></i></p></center>
-                      </div>
-                      <div class="form-group"> 
-                        <button type="submit" id="submit<?php echo  $i ?>" class="buy_button main_buy btn btn-sm btn-warning" name="pedido<?php echo  $i ?>">
-                        Enviar <i class="fa fa-send" aria-hidden="true"></i>
-                          
-                        </button>
-                      </div>
-                    </form>
-                </td>
-              </tr>
-              <tr>
-                <td><h4><?php echo utf8_decode($productos_data['titulo']); ?></h4><br>
-                <span class="badge badge-danger badge-pill">$<?php echo $productos_data['precio']; ?> <small>MXN</small></span>
-                </td>
-              </tr>
-              <tr id="hidden_stuff<?php echo $i;?>" class="hidden_stuff">
-                <td><?php echo utf8_decode($productos_data['descripcion']); ?></td>
-              </tr>
-              <tr class="hidden_stuff<?php echo $i;?> colores">
-                <td>
-                  <div id="comprar" name="">
-                    <button id="hidden_button" class="btn btn-sm" disabled>----</button>
-                    <button id="buy_button" onclick="mostrar_email(this.name);" class="buy_button main_buy btn btn-sm btn-warning" name="<?php echo  $i ?>">
-                    Comprar <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                      
-                    </button>
-                    
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        
-        </div>
-        <?php 
-        }//Cierre del ciclo del catalogo
-        echo "</div>";//cerramos el div row      
-      }//fin de imprimir promocionees principales
-?>
-    <div class="row">
-      <?php
-     /****************** mostrar tarjetas del catalogo actual **********************/
-      $productos_query = "SELECT * FROM productos WHERE categoria = '{$_SESSION['catalogo_actual']}' ";
-      $productos = mysqli_query($conexion,$productos_query);
-      $productos_rows = mysqli_num_rows($productos);
-      if (!isset($i)) {
-        $i = 0;
-      }
-      $limit = $productos_rows + $i;
-      for ($j=$i; $j < $limit; $j++) { 
-        $productos_data = mysqli_fetch_array($productos);
-      ?>
-      <div id="cat_square<?php echo $j;?>" class="cat_square col-md-4 col-lg-3 col-xl-2 col-sm-6 col-xs-12">
-        <br>
-        <table id="cat_item<?php echo $j;?>" class="table bg-catSquare cat_40vh " >
-          <tbody>
-            <tr>
-              <td class="cat_25vh">
-                <center>
-                  <img src="diseño/img/<?php echo $productos_data['imagen'] ?>" class="cat_image">
-                </center>
-                <!--<img src="diseño/img/caballero.jpg" class="cat_image">-->
-              </td>
-              <td id="email_view<?php echo $j;?>" class="email_viewH">
-                  <div class="explicacion ">
-                    <strong><h3>¿Te interesa este producto?</h3></strong>
-                    <br>
-                    <p>Dejanos un mensaje con tu pedido y en breve te responderemos</p>
-                  </div>
-                  <form id="email<?php echo $j;?>" action="pedido_email.php" method="POST"> <!--También hay que mandarlo a pedidos.php para subir el pedido-->
-                    <div class=" form-group">
-                      <label  for="">Escribenos aquí por tu pedido</label>
-                      <textarea class="form-control" required placeholder="¡Quiero 3 de ésta increíble prenda! una docena, Dame un par de esta prenda" id="" name="pedido_descripcion<?php echo  $j ?>" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label class="">¿A qué correo deseas que te contactemos?</label>
-                      <input type ="email" class="form-control form-control-sm" required name="pedido_correo<?php echo  $j ?>" placeholder="email@email.com">
-                      <small id="emailHelp" class="form-text text-white">Nunca compartiremos tu información con nadie</small>
-                      <center><p><i class="fa fa-user-secret fa-2x" aria-hidden="true"></i></p></center>
-                    </div>
-                    <div class="form-group"> 
-                      <button type="submit" id="submit<?php echo  $j ?>" class="buy_button btn btn-sm btn-warning" name="pedido<?php echo  $j ?>">
-                      Enviar <i class="fa fa-send" aria-hidden="true"></i>
-                        
-                      </button>
-                    </div>
-                  </form>
-              </td>
-            </tr>
-            <tr>
-              <td><h5><?php echo utf8_decode($productos_data['titulo']); ?></h5><br>
-              <span class="badge badge-warning badge-pill">$<?php echo $productos_data['precio']; ?> <small>MXN</small></span>
-              </td>
-            </tr>
-            <tr id="hidden_stuff<?php echo $i;?>" class="hidden_stuff">
-              <td><?php echo utf8_decode($productos_data['descripcion']); ?></td>
-            </tr>
-            <tr class="hidden_stuff<?php echo $i;?> colores">
-              <td>
-                <div id="comprar" name="">
-                  <button id="hidden_button" class="btn btn-sm" disabled>----</button>
-                  <button id="buy_button" onclick="mostrar_email(this.name);" class="buy_button btn btn-sm btn-warning" name="<?php echo  $i ?>">
-                  Comprar <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    
-                  </button>
-                  
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+  <div class="cat__content">
+      <?php include("components/sideDrawer/sideDrawer.php"); ?>
+      <?php include("components/catShower/catShower.php"); ?>
       
-      </div>
-      <div class="hidden" id="promocion" name="<?php echo $_SESSION['catalogo_actual']; ?>" style="display: none;"></div>
-      <div class="hidden" id="productos_rows" name="<?php echo $productos_rows; ?>" style="display: none;"></div>
 
-      <?php 
-      }//Cierre del ciclo del catalogo
-       ?>
-    </div>
   </div>
-</div>
+
 
 
   <?php 
@@ -425,9 +237,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="diseño/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://use.fontawesome.com/ca566248d2.js"></script>
-  <script>
-    $('.dropdown-toggle').dropdown();
-  </script>
+
 <script type="">
     function mostrar_email(numero){ //Está función expande el formulario de contactar ala tienda
       $("#cat_square"+numero).toggleClass("col-sm-6 col-sm-12");
